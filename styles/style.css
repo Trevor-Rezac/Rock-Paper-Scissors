@@ -1,34 +1,28 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
 body {
-    /* feel free to update these css variables for a quick theme */
     
     --color1: white;
     --color2: white;
     --color3: white;
     --color4: white;
     --color5: white;
-    
-    /* https://coolors.co/generate and click export -> scss to get the colors to copy and paste below*/
-        
-    /* --color1: hsla(349, 69%, 76%, 1);
-    --color2: hsla(207, 67%, 44%, 1);
-    --color3: hsla(200, 61%, 56%, 1);
-    --color4: hsla(187, 41%, 94%, 1);
-    --color5: hsla(170, 28%, 95%, 1); */
 
-    /* --color1: hsla(45, 86%, 83%, 1);
-    --color2: hsla(135, 65%, 98%, 1);
-    --color3: hsla(315, 37%, 86%, 1);
-    --color4: hsla(45, 73%, 98%, 1);
-    --color5: hsla(224, 40%, 79%, 1); */
+    --viridian-green: #119da4ff;
+    --teal-blue: #0c7489ff;
+    --midnight-green-eagle-green: #13505bff;
+    --rich-black-fogra-39: #040404ff;
+    --timberwolf: #d7d9ceff;
     
-    --header-height: 80px;
-    --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
+    --header-height: 60px;
+    --shadow: 0px 10px 20px -12px var(--midnight-green-eagle-green);
     --gutter: 30px;
     --footer-height: 25px;
     
-    font-family: 'Titillium Web', sans-serif;
-    background-color: var(--color2);
+    font-family: 'Play', sans-serif;
+    color: var(--timberwolf);
+    background-color: var(--rich-black-fogra-39);
 }
 
 main {
@@ -39,46 +33,19 @@ main {
     margin-bottom: calc(var(--footer-height));
 }
 
-section {
-    background-color: var(--color5);
-    max-width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: var(--gutter);
-    padding-bottom: var(--gutter);
-    margin-top: var(--gutter);
-    margin-bottom: var(--gutter);
-    border: solid 2px var(--color1);
-}
-
 header {
     display: flex;
-    justify-content: flex-end;
-    background-color: var(--color3);
+    justify-content: center;
+    align-items: center;
+    background-color: var(--midnight-green-eagle-green);
     height: var(--header-height);
     box-shadow: var(--shadow);
+    font-size: 20px;
+    color: var(--timberwolf);
+    text-shadow: -2px -2px var(--rich-black-fogra-39);
+    
 }
 
-
-h2 {
-    font-size: 1.8rem;
-    font-weight: bold;
-}
-
-.gutter-right {
-    margin-right: 20px;
-}
-
-header img {
-    height: var(--header-height);
-}
-
-p {
-    margin: var(--gutter);
-}
-  
 footer {
     position: fixed;
     width: 100%;
@@ -86,6 +53,93 @@ footer {
     height: var(--footer-height);
     display: flex;
     justify-content: flex-end;
-    background-color: var(--color3);
+    background-color: var(--midnight-green-eagle-green);
     box-shadow: var(--shadow);
+}
+
+.score-container {
+    border: solid 2px var(--timberwolf);
+    margin: 15px auto;
+    padding: 5px;
+    font-size: 40px;
+    position: relative;
+    width: 175px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.user-badge {
+    position: absolute;
+    background-color: var(--midnight-green-eagle-green);
+    top: 18px;
+    left: -20px;
+    font-size: 20px;
+    text-shadow: -1px -1px var(--rich-black-fogra-39);
+    border-radius: 2px;
+    width: 45px;
+}
+
+.comp-badge {
+    position: absolute;
+    background-color: var(--midnight-green-eagle-green);
+    top: 18px;
+    right: -25px;
+    font-size: 20px;
+    text-shadow: -1px -1px var(--rich-black-fogra-39);
+    border-radius: 2px;
+    width: 55px;
+    text-align: center;
+}
+
+.results {
+    font-size: 30px;
+}
+
+.choice-container {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.choice {
+    border: solid 2px var(--timberwolf);
+    border-radius: 50%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 150px;
+    transition: all .3s ease;
+}
+
+.choice:hover {
+    cursor: pointer;
+    background-color: var(--midnight-green-eagle-green);
+}
+
+img {
+    height: 100px;
+    width: 100px;
+}
+
+.command {
+    font-size: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+.win {
+    border-color: green;
+}
+
+.lose {
+    border-color: red;
+}
+
+.draw {
+    border-color: grey;
 }
