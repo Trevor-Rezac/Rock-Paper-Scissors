@@ -2,6 +2,7 @@ import { getRandomItem } from './function-utils.js';
 
 const userScoreEl = document.querySelector('.user-score');
 const compScoreEl = document.querySelector('.comp-score');
+const resetBtn = document.querySelector('#reset-btn');
 
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
@@ -10,8 +11,8 @@ const scissors = document.querySelector('#scissors');
 const resultsEL = document.querySelector('.results');
 const commandEl = document.querySelector('.command');
 
-let userScore = '';
-let compScore = '';
+let userScore = 0;
+let compScore = 0;
 
 const commandArr = [
     'Make a move!',
@@ -28,6 +29,10 @@ const choiceArr = [
 ];
 
 displayCommand();
+
+resetBtn.addEventListener('click', () => {
+    resetStats();
+});
 
 rock.addEventListener('click', () => {
     const compGuess = getRandomItem(choiceArr);
@@ -135,4 +140,11 @@ function enablePointer() {
 
 function displayCommand() {
     commandEl.textContent = getRandomItem(commandArr);
+}
+
+function resetStats() {
+    userScore = 0;
+    compScore = 0;
+    userScoreEl.textContent = `${userScore} `;
+    compScoreEl.textContent = ` ${compScore}`;
 }
