@@ -100,7 +100,6 @@ footer {
     flex-direction: row;
 }
 
-
 .choice {
     border: solid 2px var(--timberwolf);
     border-radius: 50%;
@@ -132,14 +131,6 @@ img {
     display: none;
 }
 
-.win {
-    border-color: green;
-}
-
-.lose {
-    border-color: red;
-}
-
-.draw {
-    border-color: grey;
+.noPointer {
+    pointer-events: none;
 }

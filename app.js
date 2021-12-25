@@ -8,15 +8,19 @@ const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 
 const resultsEL = document.querySelector('.results');
+const commandEl = document.querySelector('.command');
 
 let userScore = '';
 let compScore = '';
+
 
 const choiceArr = [
     rock,
     paper,
     scissors
 ];
+
+displayCommand();
 
 rock.addEventListener('click', () => {
     const compGuess = getRandomItem(choiceArr);
@@ -33,45 +37,40 @@ scissors.addEventListener('click', () => {
     handleGuess(scissors, compGuess);
 });
 
-
 function handleGuess(userGuess, correctGuess) {
-    resetStyles();
+    commandEl.textContent = '';
 
     if (userGuess === correctGuess) {
         resultsEL.textContent = 'Draw!';
-        userGuess.style.borderColor = 'grey';
-        userGuess.style.boxShadow = '0 0 10px grey';
+        draw(userGuess);
     } else if (userGuess === rock && correctGuess === scissors) {
         updateUserScore();
         resultsEL.textContent = 'Rock smashes Scissors! You Win!';
-        userGuess.style.borderColor = 'green';
-        userGuess.style.boxShadow = '0 0 10px green';
+        win(userGuess);
     } else if (userGuess === paper && correctGuess === rock) {
         updateUserScore();
         resultsEL.textContent = 'Paper covers Rock! You Win!';
-        userGuess.style.borderColor = 'green';
-        userGuess.style.boxShadow = '0 0 10px green';
+        win(userGuess);
     } else if (userGuess === scissors && correctGuess === paper) {
         updateUserScore();
         resultsEL.textContent = 'Scissors cut Paper! You Win!';
-        userGuess.style.borderColor = 'green';
-        userGuess.style.boxShadow = '0 0 10px green';
+        win(userGuess);
     } else if (correctGuess === rock && userGuess === scissors) {
         updateCompScore();
         resultsEL.textContent = 'Rock smashes Scissors! You Lose!';
-        userGuess.style.borderColor = 'red';
-        userGuess.style.boxShadow = '0 0 10px red';
+        lose(userGuess);
     } else if (correctGuess === paper && userGuess === rock) {
         updateCompScore();
         resultsEL.textContent = 'Paper covers Rock! You Lose!';
-        userGuess.style.borderColor = 'red';
-        userGuess.style.boxShadow = '0 0 10px red';
+        lose(userGuess);
     } else if (correctGuess === scissors && userGuess === paper) {
         updateCompScore();
         resultsEL.textContent = 'Scissors cut Paper! You Lose!';
-        userGuess.style.borderColor = 'red';
-        userGuess.style.boxShadow = '0 0 10px red';
-    } 
+        lose(userGuess);
+    }
+    disablePointer();
+    resetTimeout();
+    
 }
 
 function updateUserScore() {
@@ -86,23 +85,47 @@ function updateCompScore() {
 
 function resetStyles() {
     resultsEL.textContent = '';
+    commandEl.textContent = 'Make a move!';
     rock.style.border = 'solid 2px var(--timberwolf)';
     rock.style.boxShadow = 'none';
     paper.style.border = 'solid 2px var(--timberwolf)';
     paper.style.boxShadow = 'none';
     scissors.style.border = 'solid 2px var(--timberwolf)';
     scissors.style.boxShadow = 'none';
+    enablePointer();
 }
 
-// function win(userGuess) {
-//     userGuess.classList.add('win');
-// }
+function resetTimeout(){
+    setTimeout(resetStyles, 2000);
+}
 
-// function lose(userGuess) {
-//     userGuess.classList.add('lose');
-// }
+function draw(userGuess) {
+    userGuess.style.borderColor = 'grey';
+    userGuess.style.boxShadow = '0 0 10px grey';
+}
 
-// function draw(userGuess) {
-//     userGuess.classList.add('draw');
-// }
+function win(userGuess) {
+    userGuess.style.borderColor = 'green';
+    userGuess.style.boxShadow = '0 0 10px green';
+}
 
+function lose(userGuess) {
+    userGuess.style.borderColor = 'red';
+    userGuess.style.boxShadow = '0 0 10px red';
+}
+
+function disablePointer() {
+    rock.classList.add('noPointer');
+    paper.classList.add('noPointer');
+    scissors.classList.add('noPointer');
+}
+
+function enablePointer() {
+    rock.classList.remove('noPointer');
+    paper.classList.remove('noPointer');
+    scissors.classList.remove('noPointer');
+}
+
+function displayCommand() {
+    commandEl.textContent = 'Make your Move!';
+}
