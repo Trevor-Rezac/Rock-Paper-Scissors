@@ -13,6 +13,13 @@ const commandEl = document.querySelector('.command');
 let userScore = '';
 let compScore = '';
 
+const commandArr = [
+    'Make a move!',
+    'On Three! 1..2..3!',
+    'Make your move!',
+    'Rock, Paper, Scissors, Shoot!',
+    'Ro-Sham-Bo!'
+];
 
 const choiceArr = [
     rock,
@@ -85,7 +92,7 @@ function updateCompScore() {
 
 function resetStyles() {
     resultsEL.textContent = '';
-    commandEl.textContent = 'Make a move!';
+    displayCommand();
     rock.style.border = 'solid 2px var(--timberwolf)';
     rock.style.boxShadow = 'none';
     paper.style.border = 'solid 2px var(--timberwolf)';
@@ -127,5 +134,5 @@ function enablePointer() {
 }
 
 function displayCommand() {
-    commandEl.textContent = 'Make your Move!';
+    commandEl.textContent = getRandomItem(commandArr);
 }
