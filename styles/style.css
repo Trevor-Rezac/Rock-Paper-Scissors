@@ -91,6 +91,20 @@ footer {
     text-align: center;
 }
 
+#reset-btn {
+    cursor: pointer;
+    background-color: var(--midnight-green-eagle-green);
+    color: var(--timberwolf);
+    border: solid 2px var(--teal-blue);
+    border-radius: 5px;
+    text-shadow: -1px -1px var(--rich-black-fogra-39);;
+}
+
+#reset-btn:hover {
+    color: var(--rich-black-fogra-39);
+    text-shadow: -1px -1px var(--teal-blue);;
+}
+
 .results {
     font-size: 30px;
 }
@@ -98,6 +112,7 @@ footer {
 .choice-container {
     display: flex;
     flex-direction: row;
+    margin-top: 20px;
 }
 
 .choice {
