@@ -58,7 +58,7 @@ footer {
 }
 
 .score-container {
-    border: solid 2px var(--timberwolf);
+    border: solid 2px var(--teal-blue);
     margin: 15px auto;
     padding: 5px;
     font-size: 40px;
@@ -110,7 +110,7 @@ footer {
     align-items: center;
     height: 150px;
     width: 150px;
-    transition: all .3s ease;
+    transition: all .3s ease-in-out;
 }
 
 .choice:hover {
@@ -125,6 +125,7 @@ img {
 
 .command {
     font-size: 30px;
+    color: var(--teal-blue)
 }
 
 .hidden {
